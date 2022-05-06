@@ -2,6 +2,7 @@
 
 * scala
 * hadoop
+* hbase
 
 ### docs
 hadoop安装：
