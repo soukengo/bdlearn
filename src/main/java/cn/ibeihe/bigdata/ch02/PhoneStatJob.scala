@@ -36,6 +36,7 @@ object PhoneStatJob extends Configured with Tool {
     //设置reduce 输出的 key value
     job.setOutputKeyClass(classOf[Text])
     job.setOutputValueClass(classOf[IntWritable])
+    job.setNumReduceTasks(1)
     val input: String = Constant.WORK_DIR + "/input"
     val inputPath = new Path(input)
     fs.deleteOnExit(inputPath)
