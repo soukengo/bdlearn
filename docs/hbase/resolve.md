@@ -8,7 +8,7 @@
 export HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
 ```
 
-### 2.org.apache.hadoop.security.HadoopKerberosName.setRuleMechanism(Ljava/lang/String;)V
+### 2.Exception in thread "main" java.lang.NoSuchMethodError: org.apache.hadoop.security.HadoopKerberosName.setRuleMechanism(Ljava/lang/String;)V
 
 导入hadoop-auth
 
