@@ -5,5 +5,11 @@
 * hbase
 
 ### docs
-hadoop安装：
-[macbook m1 pro安装 hadoop集群](docs/hadoop/install.md)
+
+#### hadoop
+
+* [macbook m1 pro安装 hadoop集群](docs/hadoop/install.md)
+
+#### hbase
+
+* [Hbase常见错误解决](docs/hbase/resolve.md)
