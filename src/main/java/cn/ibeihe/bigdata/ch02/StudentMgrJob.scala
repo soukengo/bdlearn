@@ -21,7 +21,10 @@ object StudentMgrJob extends Configured with Tool {
     System.setProperty("jdk.tls.rejectClientInitiatedRenegotiation", "true")
     System.setProperty("zookeeper.sasl.client", "false")
     val conf: Configuration = new Configuration();
-//    conf.addResource("hadoop-default.xml")
+    //    conf.addResource("hadoop-default.xml")
+    if (args.length > 0) {
+      conf.set("hbase.zookeeper.quorum", args(0))
+    }
     System.exit(ToolRunner.run(conf, this, args));
   }
 
