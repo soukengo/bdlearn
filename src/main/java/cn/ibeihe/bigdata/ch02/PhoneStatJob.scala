@@ -12,7 +12,7 @@ import org.slf4j.{Logger, LoggerFactory}
 
 object PhoneStatJob extends Configured with Tool {
 
-  var logger: Logger = LoggerFactory.getLogger(PhoneStatJob.getClass)
+  var logger: Logger = LoggerFactory.getLogger(getClass)
 
   def main(args: Array[String]): Unit = {
     val conf: Configuration = new Configuration();

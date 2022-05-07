@@ -4,17 +4,18 @@
     <contextName>logback</contextName>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- <filter class="com.example.logback.filter.MyFilter" /> -->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n
-            </pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+    <logger name="org.apache" level="WARN" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
 
-    <root level="debug">
+    <root level="INFO">
         <appender-ref ref="console"/>
     </root>
 
