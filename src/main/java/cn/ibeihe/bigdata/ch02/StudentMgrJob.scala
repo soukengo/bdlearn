@@ -10,7 +10,7 @@ import org.slf4j.{Logger, LoggerFactory}
 
 import java.util
 
-object HelloHbase extends Configured with Tool {
+object StudentMgrJob extends Configured with Tool {
 
   val logger: Logger = LoggerFactory.getLogger(getClass)
 
