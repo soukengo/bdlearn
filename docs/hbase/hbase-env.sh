@@ -146,3 +146,4 @@ export JAVA_HOME=/usr/local/sbin/jdk1.8.0_333
 export HADOOP_HOME=/usr/local/sbin/hadoop-3.3.1
 export ZOOKEEPER_HOME=/usr/local/sbin/apache-zookeeper-3.8.0-bin
 export HBASE_HOME=/usr/local/sbin/hbase-2.4.11
+export HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
