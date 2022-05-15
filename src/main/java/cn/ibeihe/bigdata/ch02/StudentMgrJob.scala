@@ -4,7 +4,7 @@ import cn.ibeihe.bigdata.config.Config
 import org.apache.hadoop.conf.{Configuration, Configured}
 import org.apache.hadoop.hbase.client._
 import org.apache.hadoop.hbase.util.Bytes
-import org.apache.hadoop.hbase.{HConstants, NamespaceDescriptor, TableName}
+import org.apache.hadoop.hbase.{NamespaceDescriptor, TableName}
 import org.apache.hadoop.util.{Tool, ToolRunner}
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -67,7 +67,6 @@ object StudentMgrJob extends Configured with Tool {
     if (admin.tableExists(tableName)) {
       return
     }
-    ColumnFamilyDescriptorBuilder.newBuilder(HConstants.CATALOG_FAMILY)
     val builder = TableDescriptorBuilder.newBuilder(tableName)
     Student.DESCRIPTOR.foreach(item => {
       builder.setColumnFamily(ColumnFamilyDescriptorBuilder.newBuilder(Bytes.toBytes(item._1)).build())
