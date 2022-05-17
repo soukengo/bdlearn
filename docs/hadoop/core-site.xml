@@ -32,7 +32,7 @@
     <!-- 配置HDFS网页登录使用的静态用户为soukengo（自己的用户名）-->
     <property>
         <name>hadoop.http.staticuser.user</name>
-        <value>soukengo</value>
+        <value>root</value>
     </property>
 
     <property>
@@ -42,6 +42,25 @@
     <property>
         <name>hadoop.proxyuser.root.groups</name>
         <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hive.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hive.groups</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hive.server2.thrift.client.user</name>
+        <value>hive</value>
+        <description>Username to use against thrift client</description>
+    </property>
+    <property>
+        <name>hive.server2.thrift.client.password</name>
+        <value>hive123456</value>
+        <description>Password to use against thrift client</description>
     </property>
 
 </configuration>
