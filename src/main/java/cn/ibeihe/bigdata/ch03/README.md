@@ -55,5 +55,27 @@ LIMIT 10;
 ```
 
 ### 2.3 作业3
-
-todo
+* SQL
+```sql
+-- step3 计算平均分
+SELECT m.moviename,avg(r2.rate)
+FROM (
+    -- step2 计算评分最多用户所给出最高分10部电影id
+	SELECT r.movieid 
+	FROM (
+	    -- step1 计算 评分次数最多的用户id
+		SELECT u.userid,COUNT(1) max_count
+		FROM t_rating r
+		JOIN t_user u ON u.userid=r.userid
+		WHERE u.sex='F'
+		GROUP BY u.userid
+		ORDER BY max_count
+		DESC LIMIT 1
+	) mc 
+    JOIN t_rating r ON mc.userid=r.userid
+    ORDER BY r.rate DESC LIMIT 10
+) mr
+JOIN t_rating r2 ON mr.movieid=r2.movieid
+JOIN t_movie m ON m.movieid=mr.movieid
+GROUP BY m.moviename;
+```
