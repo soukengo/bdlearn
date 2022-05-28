@@ -1,21 +1,26 @@
 ## 第三周作业
 
 ### 1 准备工作
-### 1.1 上传数据文件
+### 1.1 创建表存储目录
 ```shell
 # 用户表
 hdfs dfs -mkdir -p /user/student5/wusq/ch03/data/users
-hdfs dfs -put /home/student5/wusq/ch03/data/users.dat /user/student5/wusq/ch03/data/users
 # 电影表
 hdfs dfs -mkdir -p /user/student5/wusq/ch03/data/movies
-hdfs dfs -put /home/student5/wusq/ch03/data/movies.dat /user/student5/wusq/ch03/data/movies
 # 评分表
 hdfs dfs -mkdir -p /user/student5/wusq/ch03/data/ratings
+```
+#### 1.2 创建数据库(v1)
+* 依次执行[sql脚本](sql/ddl.sql)
+* 手动put数据
+```shell
+hdfs dfs -put /home/student5/wusq/ch03/data/users.dat /user/student5/wusq/ch03/data/users
+hdfs dfs -put /home/student5/wusq/ch03/data/movies.dat /user/student5/wusq/ch03/data/movies
 hdfs dfs -put /home/student5/wusq/ch03/data/ratings.dat /user/student5/wusq/ch03/data/ratings
 ```
-#### 1.2 创建数据库
-* 依次执行[sql脚本](sql/ddl.sql)
 
+#### 1.3 创建数据库(V2)
+* 依次执行[sql脚本](sql/ddl_v2.sql)
 
 ### 2 作业实现
 
@@ -24,14 +29,28 @@ hdfs dfs -put /home/student5/wusq/ch03/data/ratings.dat /user/student5/wusq/ch03
 ```sql
 SELECT 
     u.age,AVG(r.rate) avgrate
-FROM wusq.ch03_movie m
-JOIN wusq.ch03_rating r ON r.movieid = m.movieid
-JOIN wusq.ch03_user u ON u.userid = r.userid
-GROUP BY u.age
+FROM t_movie m
+JOIN t_rating r ON r.movieid = m.movieid
+JOIN t_user u ON u.userid = r.userid
+WHERE m.movieid = 2116
+GROUP BY u.age;
 ```
 
 ### 2.2 作业2
-todo
+* SQL
+
+```sql
+SELECT 
+    u.sex,m.moviename name,AVG(r.rate) avgrate,COUNT(1) total
+FROM t_movie m
+JOIN t_rating r ON r.movieid = m.movieid
+JOIN t_user u ON u.userid = r.userid
+WHERE u.sex = 'M'
+GROUP BY u.sex,m.moviename
+HAVING total > 50
+ORDER BY avgrate DESC
+LIMIT 10;
+```
 
 ### 2.3 作业3
 
