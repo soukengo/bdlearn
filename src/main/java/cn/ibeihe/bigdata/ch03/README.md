@@ -65,17 +65,24 @@ FROM (
 	FROM (
 	    -- step1 计算 评分次数最多的用户id
 		SELECT u.userid,COUNT(1) max_count
-		FROM t_rating r
-		JOIN t_user u ON u.userid=r.userid
+		FROM wusq.t_rating r
+		JOIN wusq.t_user u ON u.userid=r.userid
 		WHERE u.sex='F'
 		GROUP BY u.userid
 		ORDER BY max_count
 		DESC LIMIT 1
 	) mc 
-    JOIN t_rating r ON mc.userid=r.userid
+    JOIN wusq.t_rating r ON mc.userid=r.userid
     ORDER BY r.rate DESC LIMIT 10
 ) mr
-JOIN t_rating r2 ON mr.movieid=r2.movieid
-JOIN t_movie m ON m.movieid=mr.movieid
+JOIN wusq.t_rating r2 ON mr.movieid=r2.movieid
+JOIN wusq.t_movie m ON m.movieid=mr.movieid
 GROUP BY m.moviename;
+```
+
+* 在beeline中执行用这个
+```sql
+SELECT m.moviename,avg(r2.rate) avgrate FROM (-- step2 计算评分最多用户所给出最高分10部电影id
+SELECT r.movieid FROM (-- step1 计算 评分次数最多的用户id
+SELECT u.userid,COUNT(1) max_count FROM wusq.t_rating r JOIN wusq.t_user u ON u.userid=r.userid WHERE u.sex='F' GROUP BY u.userid ORDER BY max_count DESC LIMIT 1) mc JOIN wusq.t_rating r ON mc.userid=r.userid ORDER BY r.rate DESC LIMIT 10) mr JOIN wusq.t_rating r2 ON mr.movieid=r2.movieid JOIN wusq.t_movie m ON m.movieid=mr.movieid GROUP BY m.moviename;
 ```
