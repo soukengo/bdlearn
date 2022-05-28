@@ -23,7 +23,14 @@ hdfs dfs -put /home/student5/wusq/ch03/data/ratings.dat /user/student5/wusq/ch03
 
 #### 1.2 创建数据库(V2)
 * 通过beeline连接hive
-* 依次执行[sql脚本](sql/ddl_v2.sql)
+* 依次执行[sql脚本](sql/ddl.sql)
+* load data
+```sql
+
+load data inpath '/user/student5/wusq/ch03/tmp/users.dat' into table wusq.t_user;
+load data inpath '/user/student5/wusq/ch03/tmp/movies.dat' into table wusq.t_movie;
+load data inpath '/user/student5/wusq/ch03/tmp/ratings.dat' into table wusq.t_rating;
+```
 
 ### 2 作业实现
 
