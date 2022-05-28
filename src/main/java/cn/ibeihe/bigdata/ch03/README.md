@@ -58,7 +58,7 @@ LIMIT 10;
 * SQL
 ```sql
 -- step3 计算平均分
-SELECT m.moviename,avg(r2.rate)
+SELECT m.moviename,avg(r2.rate) avgrate
 FROM (
     -- step2 计算评分最多用户所给出最高分10部电影id
 	SELECT r.movieid 
