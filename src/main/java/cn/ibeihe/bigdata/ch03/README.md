@@ -1,7 +1,10 @@
 ## 第三周作业
 
 ### 1 准备工作
-### 1.1 创建表存储目录
+
+#### 1.1 创建数据库(v1)
+* 依次执行[sql脚本](sql/ddl.sql)
+* 手动创建表存储目录
 ```shell
 # 用户表
 hdfs dfs -mkdir -p /user/student5/wusq/ch03/data/users
@@ -10,8 +13,6 @@ hdfs dfs -mkdir -p /user/student5/wusq/ch03/data/movies
 # 评分表
 hdfs dfs -mkdir -p /user/student5/wusq/ch03/data/ratings
 ```
-#### 1.2 创建数据库(v1)
-* 依次执行[sql脚本](sql/ddl.sql)
 * 手动put数据
 ```shell
 hdfs dfs -put /home/student5/wusq/ch03/data/users.dat /user/student5/wusq/ch03/data/users
@@ -19,7 +20,8 @@ hdfs dfs -put /home/student5/wusq/ch03/data/movies.dat /user/student5/wusq/ch03/
 hdfs dfs -put /home/student5/wusq/ch03/data/ratings.dat /user/student5/wusq/ch03/data/ratings
 ```
 
-#### 1.3 创建数据库(V2)
+#### 1.2 创建数据库(V2)
+* 通过beeline连接hive
 * 依次执行[sql脚本](sql/ddl_v2.sql)
 
 ### 2 作业实现
@@ -29,9 +31,9 @@ hdfs dfs -put /home/student5/wusq/ch03/data/ratings.dat /user/student5/wusq/ch03
 ```sql
 SELECT 
     u.age,AVG(r.rate) avgrate
-FROM t_movie m
-JOIN t_rating r ON r.movieid = m.movieid
-JOIN t_user u ON u.userid = r.userid
+FROM wusq.t_movie m
+JOIN wusq.t_rating r ON r.movieid = m.movieid
+JOIN wusq.t_user u ON u.userid = r.userid
 WHERE m.movieid = 2116
 GROUP BY u.age;
 ```
@@ -42,9 +44,9 @@ GROUP BY u.age;
 ```sql
 SELECT 
     u.sex,m.moviename name,AVG(r.rate) avgrate,COUNT(1) total
-FROM t_movie m
-JOIN t_rating r ON r.movieid = m.movieid
-JOIN t_user u ON u.userid = r.userid
+FROM wusq.t_movie m
+JOIN wusq.t_rating r ON r.movieid = m.movieid
+JOIN wusq.t_user u ON u.userid = r.userid
 WHERE u.sex = 'M'
 GROUP BY u.sex,m.moviename
 HAVING total > 50

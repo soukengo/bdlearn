@@ -13,3 +13,6 @@
 #### hbase
 
 * [Hbase常见错误解决](docs/hbase/resolve.md)
+#### hive
+
+* [Hive常见错误解决](docs/hive/resolve.md)
