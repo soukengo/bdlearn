@@ -3,7 +3,6 @@
 ### 1 准备工作
 
 #### 1.1 创建数据库(v1)
-* 依次执行[sql脚本](sql/ddl.sql)
 * 手动创建表存储目录
 ```shell
 # 用户表
@@ -19,6 +18,8 @@ hdfs dfs -put /home/student5/wusq/ch03/data/users.dat /user/student5/wusq/ch03/d
 hdfs dfs -put /home/student5/wusq/ch03/data/movies.dat /user/student5/wusq/ch03/data/movies
 hdfs dfs -put /home/student5/wusq/ch03/data/ratings.dat /user/student5/wusq/ch03/data/ratings
 ```
+* 通过beeline连接hive
+* 依次执行[sql脚本](sql/ddl.sql)
 
 #### 1.2 创建数据库(V2)
 * 通过beeline连接hive
