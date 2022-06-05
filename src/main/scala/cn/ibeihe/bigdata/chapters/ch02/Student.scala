@@ -1,9 +1,7 @@
-package cn.ibeihe.bigdata.ch02
-
-import cn.ibeihe.bigdata.config.Config
+package cn.ibeihe.bigdata.chapters.ch02
 
 object Student {
-  val TABLE_NAME: String = Config.HBASE_NAMESPACE + ":student"
+  val TABLE_NAME: String = "student"
   val COL_FAMILY_NAME = "name"
   val COL_FAMILY_INFO = "info"
   val COL_FAMILY_SCORE = "score"

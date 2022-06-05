@@ -1,10 +1,10 @@
-package cn.ibeihe.bigdata.ch02
+package cn.ibeihe.bigdata.chapters.ch02
 
 import cn.ibeihe.bigdata.config.Config
 import org.apache.hadoop.conf.{Configuration, Configured}
 import org.apache.hadoop.hbase.client._
 import org.apache.hadoop.hbase.util.Bytes
-import org.apache.hadoop.hbase.{NamespaceDescriptor, TableName}
+import org.apache.hadoop.hbase.{HBaseConfiguration, NamespaceDescriptor, TableName}
 import org.apache.hadoop.util.{Tool, ToolRunner}
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -54,12 +54,16 @@ object StudentMgrJob extends Configured with Tool {
     return 1
   }
 
+  def getTableName: String = {
+    Config.getConfig.hbase.namespace + Config.getConfig.hbase.NAMESPACE_SPLITTER + Student.TABLE_NAME
+  }
+
   def createNamespace(): Unit = {
     val list = admin.listNamespaces()
-    if (list.contains(Config.HBASE_NAMESPACE)) {
+    if (list.contains(Config.getConfig.hbase.namespace)) {
       return
     }
-    admin.createNamespace(NamespaceDescriptor.create(Config.HBASE_NAMESPACE).build())
+    admin.createNamespace(NamespaceDescriptor.create(Config.getConfig.hbase.namespace).build())
   }
 
   def createTable(): Unit = {

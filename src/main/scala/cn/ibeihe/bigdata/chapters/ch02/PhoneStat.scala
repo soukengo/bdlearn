@@ -1,4 +1,4 @@
-package cn.ibeihe.bigdata.ch02
+package cn.ibeihe.bigdata.chapters.ch02
 
 import org.apache.hadoop.io.Writable
 

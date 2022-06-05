@@ -1,0 +1,16 @@
+app:
+  userDir: /user/student5/wusq
+  localUserDir: /home/student5/wusq
+  user: wusq
+
+hadoop:
+  hdfsUrl: hdfs://bd01:8020
+
+hbase:
+  zookeeperQuorum: bd01:2181,bd02:2181,bd03:2181
+  namespace: wusq
+
+spark:
+  #  master: spark://bd01:7077
+  master: local
+  serializer: org.apache.spark.serializer.KryoSerializer

@@ -1,4 +1,4 @@
-package cn.ibeihe.bigdata.ch02
+package cn.ibeihe.bigdata.chapters.ch02
 
 import org.apache.hadoop.conf.{Configuration, Configured}
 import org.apache.hadoop.fs.{FileSystem, Path}
@@ -37,13 +37,13 @@ object PhoneStatJob extends Configured with Tool {
     job.setOutputKeyClass(classOf[Text])
     job.setOutputValueClass(classOf[IntWritable])
     job.setNumReduceTasks(1)
-    val input: String = Constant.WORK_DIR + "/input"
+    val input: String = Constant.getWorkDir + "/input"
     val inputPath = new Path(input)
     fs.deleteOnExit(inputPath)
     fs.mkdirs(inputPath)
-    val localInputFilePath = new Path(Constant.LOCAL_WORK_DIR + inputFileName)
+    val localInputFilePath = new Path(Constant.getLocalWorkDir + inputFileName)
     fs.copyFromLocalFile(localInputFilePath, inputPath)
-    val output: String = Constant.WORK_DIR + "/output"
+    val output: String = Constant.getWorkDir + "/output"
     val outputPath = new Path(output)
     fs.delete(outputPath, true)
     //设置输入输出的路径
