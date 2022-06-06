@@ -1,7 +1,6 @@
 package cn.ibeihe.bigdata.chapters.ch04
 
 import cn.ibeihe.bigdata.context.SparkApp
-import cn.ibeihe.bigdata.utils.FileUtils
 
 /**
  * 作业一：使用 RDD API 实现带词频的倒排索引
@@ -20,8 +19,8 @@ object WordInvertedIndex extends SparkApp("WordInvertedIndex") {
     val res = files
       // step 2 拆分单词，并关联单词对应的文件名
       .flatMap(file =>
-        file._2.replaceAll("\n", "").split(" ")
-          .map(word => (word, Array(FileUtils.baseName(file._1))))
+        file._2.replaceAll("\n", "").replaceAll("\r", "").split(" ")
+          .map(word => (word, Array(file._1.split("/").last))) // 获取文件名
       )
       // step 3 根据key汇总计算得出单词所关联的文件列表
       .reduceByKey(_ ++ _)
@@ -29,6 +28,7 @@ object WordInvertedIndex extends SparkApp("WordInvertedIndex") {
       .map(item => (item._1, item._2.map((_, 1)).groupBy(_._1).map(v => (v._1, v._2.length)).toArray))
       .toDF("word", "count")
     res.show(false)
+    sc.stop()
   }
 
 }

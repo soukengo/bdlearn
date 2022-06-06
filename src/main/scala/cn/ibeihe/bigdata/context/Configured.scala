@@ -5,13 +5,14 @@ import org.kohsuke.args4j.CmdLineParser
 
 import scala.collection.JavaConverters.seqAsJavaListConverter
 
-
+/**
+ * 配置解析
+ */
 class Configured {
   val options = new Options()
   val parser = new CmdLineParser(options)
 
   def init(args: Array[String]): Unit = {
-
     parser.parseArgument(args.toList.asJava)
     if (options.config == null || options.config.isEmpty) {
       return
