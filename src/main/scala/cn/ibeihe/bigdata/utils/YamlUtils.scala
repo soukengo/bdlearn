@@ -1,15 +1,15 @@
 package cn.ibeihe.bigdata.utils
 
-import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper}
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 
-import java.io.File
+import java.io.InputStream
 
 object YamlUtils {
   private val mapper = new ObjectMapper(new YAMLFactory())
-//  mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+  //  mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-  def readConfig[T](path: String, clazz: Class[T]): T = {
-    mapper.readValue(new File(path), clazz)
+  def readConfig[T](stream: InputStream, clazz: Class[T]): T = {
+    mapper.readValue(stream, clazz)
   }
 }

@@ -45,7 +45,7 @@ object StudentMgrJob extends Configured with Tool {
     val studentId = "G20220698080053"
     this.deleteStudent(studentId)
     students = this.getStudents()
-    logger.info("after delete student {}, students: {}", studentId, students)
+    logger.info("after delete student {}, students: {}", studentId, students, "")
     this.deleteStudents()
     students = this.getStudents()
     logger.info("after delete all, students: {}", students)

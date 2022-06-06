@@ -24,7 +24,7 @@ object WordInvertedIndex extends SparkApp("WordInvertedIndex") {
           .map(word => (word, Array(FileUtils.baseName(file._1))))
       )
       // step 3 根据key汇总计算得出单词所关联的文件列表
-      .reduceByKey(_.concat(_))
+      .reduceByKey(_ ++ _)
       // step 4 分组计算每个单词在对应的文件出现的次数
       .map(item => (item._1, item._2.map((_, 1)).groupBy(_._1).map(v => (v._1, v._2.length)).toArray))
       .toDF("word", "count")

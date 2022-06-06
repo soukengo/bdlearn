@@ -3,7 +3,8 @@ package cn.ibeihe.bigdata.context
 import cn.ibeihe.bigdata.config.Config
 import org.kohsuke.args4j.CmdLineParser
 
-import scala.jdk.CollectionConverters.SeqHasAsJava
+import scala.collection.JavaConverters.seqAsJavaListConverter
+
 
 class Configured {
   val options = new Options()

@@ -1,6 +1,6 @@
 package cn.ibeihe.bigdata.utils
 
-import org.apache.commons.io.{FilenameUtils, IOUtils}
+import org.apache.commons.io.FilenameUtils
 
 object FileUtils {
 
