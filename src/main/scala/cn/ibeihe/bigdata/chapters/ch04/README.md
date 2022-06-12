@@ -10,6 +10,6 @@
   ```shell
   sh inverted_index.sh
   ```
-  4. 执行结果
+  3. 执行结果
   
   ![执行结果](work1/img.png)
