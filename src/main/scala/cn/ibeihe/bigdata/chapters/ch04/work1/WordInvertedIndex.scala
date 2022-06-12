@@ -1,5 +1,6 @@
-package cn.ibeihe.bigdata.chapters.ch04
+package cn.ibeihe.bigdata.chapters.ch04.work1
 
+import cn.ibeihe.bigdata.chapters.ch04.constant.Constant
 import cn.ibeihe.bigdata.context.SparkApp
 
 /**
@@ -9,7 +10,6 @@ object WordInvertedIndex extends SparkApp("WordInvertedIndex") {
 
   override def init(args: Array[String]): Unit = {
     super.init(args)
-
   }
 
   override def run(args: Array[String]): Unit = {

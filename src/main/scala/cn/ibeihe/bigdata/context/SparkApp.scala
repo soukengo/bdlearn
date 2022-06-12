@@ -24,10 +24,6 @@ abstract class SparkApp(val appName: String) extends Configured {
   }
   protected lazy val sc: SparkContext = spark.sparkContext
 
-  override def init(args: Array[String]): Unit = {
-    super.init(args)
-  }
-
   def main(args: Array[String]): Unit = {
     this.init(args)
     this.run(args)

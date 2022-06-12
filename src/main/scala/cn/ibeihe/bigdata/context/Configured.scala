@@ -9,10 +9,15 @@ import scala.collection.JavaConverters.seqAsJavaListConverter
  * 配置解析
  */
 class Configured {
-  val options = new Options()
-  val parser = new CmdLineParser(options)
+
+  private var parser: CmdLineParser = _
 
   def init(args: Array[String]): Unit = {
+    this.init(args, new Options())
+  }
+
+  def init(args: Array[String], options: Options): Unit = {
+    parser = new CmdLineParser(options)
     parser.parseArgument(args.toList.asJava)
     if (options.config == null || options.config.isEmpty) {
       return

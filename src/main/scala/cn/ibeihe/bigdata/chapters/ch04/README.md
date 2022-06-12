@@ -10,6 +10,6 @@
     ```shell
     sh inverted_index.sh
     ```
-    3. 执行脚本，提交spark任务
     4. 执行结果
+  
     ![img.png](img.png)
