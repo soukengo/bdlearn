@@ -12,4 +12,4 @@
     ```
     4. 执行结果
   
-    ![img.png](img.png)
+    ![执行结果](work1/img.png)
