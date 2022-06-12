@@ -3,6 +3,7 @@ package cn.ibeihe.bigdata.context
 import cn.ibeihe.bigdata.config.Config
 import org.kohsuke.args4j.CmdLineParser
 
+import java.io.OutputStream
 import scala.collection.JavaConverters.seqAsJavaListConverter
 
 /**
@@ -28,9 +29,14 @@ class Configured {
   def getConfig: Config = {
     val config = Config.getConfig
     if (config == null) {
-      parser.printUsage(System.err)
+      printUsage(System.err)
       throw new IllegalArgumentException("未指定配置文件")
     }
     config
   }
+
+  def printUsage(out: OutputStream): Unit = {
+    parser.printUsage(out)
+  }
 }
+

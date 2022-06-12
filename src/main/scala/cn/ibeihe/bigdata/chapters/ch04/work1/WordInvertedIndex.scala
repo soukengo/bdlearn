@@ -15,7 +15,7 @@ object WordInvertedIndex extends SparkApp("WordInvertedIndex") {
   override def run(args: Array[String]): Unit = {
     import spark.implicits._
     // step 1 加载目录下所有文件
-    val files = sc.wholeTextFiles(s"${Constant.getWorkDir}/data")
+    val files = sc.wholeTextFiles(s"${Constant.getWorkDir}/work1/data")
     val res = files
       // step 2 拆分单词，并关联单词对应的文件名
       .flatMap(file =>
