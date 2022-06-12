@@ -1,4 +1,4 @@
-package cn.ibeihe.bigdata.chapters.ch04.work2
+package cn.ibeihe.bigdata.chapters.ch05.work2
 
 import cn.ibeihe.bigdata.utils.JSONUtils
 import org.kohsuke.args4j.Option

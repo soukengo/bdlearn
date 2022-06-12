@@ -1,4 +1,4 @@
-package cn.ibeihe.bigdata.chapters.ch04.work2
+package cn.ibeihe.bigdata.chapters.ch05.work2
 
 import cn.ibeihe.bigdata.context.SparkApp
 import org.apache.commons.lang3.StringUtils
@@ -24,6 +24,11 @@ object SparkDistCp extends SparkApp("SparkDistCp") {
   override def run(args: Array[String]): Unit = {
     if (StringUtils.isEmpty(options.src) || StringUtils.isEmpty(options.target)) {
       super.printUsage(System.err)
+      return
+    }
+    if (options.src.equalsIgnoreCase(options.target)) {
+      super.printUsage(System.err)
+      logger.error("源文件地址和目标文件地址不能相同")
       return
     }
     // 获取源文件列表，并生成目标文件路径

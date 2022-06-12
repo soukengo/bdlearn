@@ -1,6 +1,6 @@
-package cn.ibeihe.bigdata.chapters.ch04.work1
+package cn.ibeihe.bigdata.chapters.ch05.work1
 
-import cn.ibeihe.bigdata.chapters.ch04.constant.Constant
+import cn.ibeihe.bigdata.chapters.ch05.constant.Constant
 import cn.ibeihe.bigdata.context.SparkApp
 
 /**
