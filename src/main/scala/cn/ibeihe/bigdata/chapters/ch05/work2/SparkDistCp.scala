@@ -33,7 +33,7 @@ object SparkDistCp extends SparkApp("SparkDistCp") {
     }
     // 获取源文件列表，并生成目标文件路径
     val files = checkFiles(options.src, options.target)
-    // 考呗源文件到目标文件
+    // 拷贝源文件到目标文件
     copyFiles(files, options.maxTask, options.ignoreErr)
   }
 
