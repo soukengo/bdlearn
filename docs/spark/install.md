@@ -53,10 +53,10 @@ tar -zxvf spark-3.2.1-bin-hadoop3.2.tgz
   
 * 将conf/spark-defaults.conf, conf/spark-env.sh ,conf/workers 3个文件复制到另外两台机器对应目录下
 * 启动 spark集群
-* 在master节点执行
-    ```shell
-      sh sbin/start-all.sh
-    ```
+  * 在master节点执行
+      ```shell
+        sh sbin/start-all.sh
+      ```
 * 启动jobhistory server
   * 在master节点执行
     ```shell
