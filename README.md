@@ -3,6 +3,7 @@
 * scala
 * hadoop
 * hbase
+* hive
 * spark
 
 ### docs
@@ -17,3 +18,7 @@
 #### hive
 
 * [Hive常见错误解决](docs/hive/resolve.md)
+
+#### spark
+
+* [安装spark集群](docs/spark/install.md)
