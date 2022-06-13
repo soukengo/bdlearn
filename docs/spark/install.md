@@ -57,9 +57,11 @@ tar -zxvf spark-3.2.1-bin-hadoop3.2.tgz
       ```shell
         sh sbin/start-all.sh
       ```
+  * 访问： http://bd01:8080  
 * 启动jobhistory server
   * 在master节点执行
     ```shell
       sh sbin/start-history-server.sh 
     ```
+  * 访问  http://bd01:18080
 
