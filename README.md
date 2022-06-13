@@ -3,6 +3,7 @@
 * scala
 * hadoop
 * hbase
+* spark
 
 ### docs
 
