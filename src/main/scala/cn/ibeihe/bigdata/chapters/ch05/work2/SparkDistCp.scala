@@ -58,21 +58,23 @@ object SparkDistCp extends SparkApp("SparkDistCp") {
 
   def copyFiles(files: ListBuffer[FilePair], taskNum: Int, ignoreErr: Boolean): Unit = {
     val tasks = sc.parallelize(files, taskNum)
-    tasks.foreach(item => {
-      // 这里不能通过sc.hadoopConfiguration获取 会报错
-      val conf = new Configuration()
-      val fileSystem = FileSystem.get(conf)
-      try {
-        FileUtil.copy(fileSystem, new Path(item.src), fileSystem, new Path(item.target), false, true, conf)
-        logger.info("copy {} success", item.src)
-      } catch {
-        case e: Exception =>
-          if (ignoreErr) {
-            logger.error("copy file error: {}", e.getMessage)
-          } else {
-            throw e
-          }
-      }
+    tasks.foreachPartition(part => {
+      part.foreach(item => {
+        // 这里不能通过sc.hadoopConfiguration获取 会报错
+        val conf = new Configuration()
+        val fileSystem = FileSystem.get(conf)
+        try {
+          FileUtil.copy(fileSystem, new Path(item.src), fileSystem, new Path(item.target), false, true, conf)
+          logger.info("copy {} success", item.src)
+        } catch {
+          case e: Exception =>
+            if (ignoreErr) {
+              logger.error("copy file error: {}", e.getMessage)
+            } else {
+              throw e
+            }
+        }
+      })
     })
 
   }
