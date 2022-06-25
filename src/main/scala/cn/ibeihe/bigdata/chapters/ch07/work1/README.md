@@ -9,13 +9,13 @@
    1. 在 `SPARK-KEYWORD-LIST` 末尾新增关键字VERSION
 
    ![新增关键字](assets/keyword.png)
-   1. 在`statement` 尾部新增指令申明 `SHOW VERSION`
+   2. 在`statement` 尾部新增指令申明 `SHOW VERSION`
 
    ![新增指令申明](assets/statement.png)
-   1. 在 `ansiNonReserved`尾部新增非保留关键字 `VERSION`
+   3. 在 `ansiNonReserved`尾部新增非保留关键字 `VERSION`
 
    ![新增非保留关键字](assets/ansinonreserved.png)
-   1. 在 `nonReserved`尾部新增非保留关键字 `VERSION`
+   4. 在 `nonReserved`尾部新增非保留关键字 `VERSION`
 
    ![新增非保留关键字](assets/nonreserved.png)
 2. 在spark源码sql/catalyst模块中执行命令生成代码
