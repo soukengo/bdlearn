@@ -72,5 +72,5 @@
 show version;
 ```
 6. 执行结果
-![img.png](assets/result.png)
+![执行结果](assets/result.png)
    
