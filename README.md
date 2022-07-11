@@ -5,6 +5,7 @@
 * hbase
 * hive
 * spark
+* presto
 
 ### docs
 
