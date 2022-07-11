@@ -23,6 +23,6 @@
 
 * [安装spark集群](docs/spark/install.md)
 
-#### protobuf
+#### presto
 
-* [Macbook M1 PRO 虚拟机（centos/ubuntu）编译protobuf 2.5.0](docs/protobuf/README.md)
+* [Macbook M1 PRO 虚拟机（centos/ubuntu）安装presto](docs/presto/README.md)
