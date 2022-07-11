@@ -42,31 +42,31 @@ make: *** [Makefile:576: all] Error 2
 * 报错原因
     * m1是arm64架构 通过 arch命令可以看到值为：aarch64
 
-    * 解决方案
-        * 1.修改 src/google/protobuf/stubs/platform_macros.h
-            * 找到以下内容
+* 解决方案
+    * 1.修改 src/google/protobuf/stubs/platform_macros.h
+        * 找到以下内容
 
-          ```C
-          #else
-          #error Host architecture was not detected as supported by protobuf 
-          ```
-            * 在它上面加入以下内容
+      ```C
+      #else
+      #error Host architecture was not detected as supported by protobuf 
+      ```
+        * 在它上面加入以下内容
 
-          ```c
-            #elif defined(__aarch64__) || defined(_M_ARM64)
-            #define GOOGLE_PROTOBUF_ARCH_AARCH64 1
-            #define GOOGLE_PROTOBUF_ARCH_64_BIT 1
-          ```
-        * 2.将[atomicops_internals_arm64_gcc.h](atomicops_internals_arm64_gcc.h)放入src/google/protobuf/stubs目录下
-        * 3.修改 src/google/protobuf/stubs/atomicops.h 文件
-          * 找到以下内容
-          ```C
-          #elif defined(GOOGLE_PROTOBUF_ARCH_ARM)
-          #include <google/protobuf/stubs/atomicops_internals_arm_gcc.h> 
-          ```
-          *在它下面加入以下内容
-          ```C
-            #elif defined(GOOGLE_PROTOBUF_ARCH_AARCH64)
-            #include <google/protobuf/stubs/atomicops_internals_arm64_gcc.h>
-          ```
-        * 4.重新执行make && make install 
+      ```c
+        #elif defined(__aarch64__) || defined(_M_ARM64)
+        #define GOOGLE_PROTOBUF_ARCH_AARCH64 1
+        #define GOOGLE_PROTOBUF_ARCH_64_BIT 1
+      ```
+    * 2.将[atomicops_internals_arm64_gcc.h](atomicops_internals_arm64_gcc.h)放入src/google/protobuf/stubs目录下
+    * 3.修改 src/google/protobuf/stubs/atomicops.h 文件
+      * 找到以下内容
+      ```C
+      #elif defined(GOOGLE_PROTOBUF_ARCH_ARM)
+      #include <google/protobuf/stubs/atomicops_internals_arm_gcc.h> 
+      ```
+      *在它下面加入以下内容
+      ```C
+        #elif defined(GOOGLE_PROTOBUF_ARCH_AARCH64)
+        #include <google/protobuf/stubs/atomicops_internals_arm64_gcc.h>
+      ```
+    * 4.重新执行make && make install 
