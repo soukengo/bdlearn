@@ -2,7 +2,7 @@
 ### 1.准备工作
 * 复用安装好的hadoop集群环境 => [hadoop集群安装](../hadoop/install.md)
 * 规划节点: bd01,bd02,bd03
-* 其中bd01为master节点
+* 其中bd01为coordinator节点
 
 ### 2.编译presto
 * 参考：https://bbs.huaweicloud.com/forum/thread-54993-1-1.html
